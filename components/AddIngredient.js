@@ -26,7 +26,7 @@ class AddIngredient extends React.Component {
     e.preventDefault()
     console.log(this.state.name,this.state.picture, this.state.nutrition)
 
-    fetch("http://192.168.2.51:3000/api/v1/ingredients", {
+    fetch("http://192.168.2.184:3000/api/v1/ingredients", {
       method: "POST",
       headers: {
         'Accept': 'application/json',

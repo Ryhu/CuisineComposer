@@ -69,7 +69,7 @@ class CuisineComposer extends React.Component {
 
 
   render() {
-    return (<View >
+    return (<View style={{marginTop:30}}>
       <View id="display">{ this.display() }</View>
 
       <View className="footer">{this.showMainMenu()}</View>
@@ -79,3 +79,31 @@ class CuisineComposer extends React.Component {
 }
 
 export default CuisineComposer;
+//
+// export default createBottomTabNavigator(
+//   {
+//     App: AppScreen,
+//     Details: DetailsScreen,
+//   },
+//   {
+//     navigationOptions: ({ navigation }) => ({
+//       tabBarIcon: ({ focused, tintColor }) => {
+//         const { routeName } = navigation.state;
+//         let iconName;
+//         if (routeName === 'Home') {
+//           iconName = `ios-information-circle${focused ? '' : '-outline'}`;
+//         } else if (routeName === 'Settings') {
+//           iconName = `ios-options${focused ? '' : '-outline'}`;
+//         }
+//
+//         // You can return any component that you like here! We usually use an
+//         // icon component from react-native-vector-icons
+//         return <Ionicons name={iconName} size={25} color={tintColor} />;
+//       },
+//     }),
+//     tabBarOptions: {
+//       activeTintColor: 'tomato',
+//       inactiveTintColor: 'gray',
+//     },
+//   }
+// );

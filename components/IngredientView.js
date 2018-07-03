@@ -6,7 +6,7 @@ class IngredientView extends React.Component {
 
   addToCart = () => {
     console.log(this.props.ingredient)
-    fetch(`http://192.168.2.51:3000/api/v1/shopping_cart_ingredients`, {
+    fetch(`http://192.168.2.184:3000/api/v1/shopping_cart_ingredients`, {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -29,7 +29,7 @@ class IngredientView extends React.Component {
 
   addToFridge = () => {
     console.log(this.props.ingredient)
-    fetch(`http://192.168.2.51:3000/api/v1/fridge_ingredients`, {
+    fetch(`http://192.168.2.184:3000/api/v1/fridge_ingredients`, {
       method: "POST",
       headers: {
         'Accept': 'application/json',

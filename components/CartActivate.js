@@ -15,7 +15,7 @@ class CartActivate extends React.Component {
   }
 
   componentDidMount(){
-    fetch("http://192.168.2.51:3000/api/v1/shopping_carts")
+    fetch("http://192.168.2.184:3000/api/v1/shopping_carts")
       .then(res => res.json())
       .then(res => {
         let result = []
@@ -50,7 +50,7 @@ class CartActivate extends React.Component {
     }
   }
   addToFridge = (ingredient) => {
-    fetch(`http://192.168.2.51:3000/api/v1/fridge_ingredients`, {
+    fetch(`http://192.168.2.184:3000/api/v1/fridge_ingredients`, {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -77,7 +77,7 @@ class CartActivate extends React.Component {
     //delete from state of client
     tempIngredients.splice(pos, 1)
     //delete from the DB
-    fetch(`http://192.168.2.51:3000/api/v1/shopping_cart_ingredients/${ingredient.join_id}`, {
+    fetch(`http://192.168.2.184:3000/api/v1/shopping_cart_ingredients/${ingredient.join_id}`, {
       method: "DELETE",
       headers: {
         'Accept': 'application/json',

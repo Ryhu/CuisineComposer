@@ -14,7 +14,7 @@ class PrepFridge extends React.Component {
   }
 
   componentDidMount(){
-    fetch("http://192.168.2.51:3000/api/v1/fridges")
+    fetch("http://192.168.2.184:3000/api/v1/fridges")
       .then(res => res.json())
       .then(res => {
         let result = []
@@ -48,7 +48,7 @@ class PrepFridge extends React.Component {
       //delete from state of client
       tempIngredients.splice(pos, 1)
       //delete from the DB
-      fetch(`http://192.168.2.51:3000/api/v1/fridge_ingredients/${ingredient.join_id}`, {
+      fetch(`http://192.168.2.184:3000/api/v1/fridge_ingredients/${ingredient.join_id}`, {
         method: "DELETE",
         headers: {
           'Accept': 'application/json',
@@ -62,7 +62,7 @@ class PrepFridge extends React.Component {
     }
     else{
       //edit the DB
-      fetch(`http://192.168.2.51:3000/api/v1/fridge_ingredients/${ingredient.join_id}`, {
+      fetch(`http://192.168.2.184:3000/api/v1/fridge_ingredients/${ingredient.join_id}`, {
         method: "PATCH",
         headers: {
           'Accept': 'application/json',

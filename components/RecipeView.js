@@ -24,7 +24,7 @@ class RecipeView extends React.Component {
 
   addToCart = (ingredient) => {
     console.log(ingredient)
-    fetch(`http://192.168.2.51:3000/api/v1/shopping_cart_ingredients`, {
+    fetch(`http://192.168.2.184:3000/api/v1/shopping_cart_ingredients`, {
       method: "POST",
       headers: {
         'Accept': 'application/json',

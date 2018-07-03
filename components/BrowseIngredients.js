@@ -18,7 +18,7 @@ class BrowseIngredients extends React.Component {
 
   //sets up the temp recipes db
   componentDidMount(){
-    fetch("http://192.168.2.51:3000/api/v1/ingredients")
+    fetch("http://192.168.2.184:3000/api/v1/ingredients")
       .then(res => res.json())
       .then(res => {
 

@@ -20,7 +20,7 @@ class Find extends React.Component {
   }
 
   componentDidMount(){
-    fetch("http://192.168.2.51:3000/api/v1/recipes")
+    fetch("http://192.168.2.184:3000/api/v1/recipes")
       .then(res => res.json())
       .then(res => {
         let result = []
@@ -34,7 +34,7 @@ class Find extends React.Component {
       })
       .catch(res => {console.log(res)})
 
-    fetch("http://192.168.2.51:3000/api/v1/ingredients")
+    fetch("http://192.168.2.184:3000/api/v1/ingredients")
       .then(res => res.json())
       .then(res => {
         let result = []
