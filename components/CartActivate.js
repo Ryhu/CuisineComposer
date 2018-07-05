@@ -8,7 +8,6 @@ class CartActivate extends React.Component {
     super(props)
 
     this.state = {
-      screen: "",
       ingredientsdb: [],
     }
 
@@ -98,9 +97,9 @@ class CartActivate extends React.Component {
   showCart(){
     return(
 
-      <View id="cartIngredients">
+      <View>
 
-        <View id="cartIngredientsUntapped">
+        <View>
         {this.state.ingredientsdb.map( (ingredient, keyVal) => {
           if(!ingredient.inCart){
             return(
@@ -112,7 +111,7 @@ class CartActivate extends React.Component {
         })}
         </View>
 
-        <View id="cartIngredientsTapped">
+        <View>
         {this.state.ingredientsdb.map( (ingredient, keyVal) => {
           if(ingredient.inCart){
             return(

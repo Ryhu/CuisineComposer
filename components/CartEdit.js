@@ -8,7 +8,6 @@ class CartEdit extends React.Component {
     super(props)
 
     this.state = {
-      screen: "",
       ingredientsdb: [],
     }
   }
@@ -87,9 +86,9 @@ class CartEdit extends React.Component {
   }
 
   renderIngredients(){
-    return(<ScrollView id="cartEditIngredients">
+    return(<ScrollView>
       {this.state.ingredientsdb.map( (ingredient, keyVal) => {
-        return(<View className="cartEditIngredient" key={keyVal}>
+        return(<View key={keyVal}>
           <Text>{ingredient.name}</Text>
 
           <Text className="cartEditIngredientCounter">{ingredient.amount}</Text>
