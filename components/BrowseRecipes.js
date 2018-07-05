@@ -2,7 +2,6 @@ import React from 'react';
 import RecipeView from './RecipeView'
 import { Button, View, Text, Image, TextInput, TouchableHighlight } from "react-native";
 
-
 class BrowseRecipes extends React.Component {
 
   constructor(props){
@@ -34,20 +33,6 @@ class BrowseRecipes extends React.Component {
       })
   }
 
-  showBrowseRecipesMenu(){
-    let filteredArr = this.filterSearch()
-    return( <View id="browseRecipes">
-    <Text>Search: </Text>
-    <TextInput style={{backgroundColor: 'white'}} onChange={ this.filterHandler } value={ this.state.filter }/>
-      {filteredArr.map( (recipe, keyVal) => {
-        return(<TouchableHighlight key={keyVal} style={{backgroundColor: '#66a3ff', marginTop:5}} className="browseRecipe" onPress={ () => this.recipeSwitch(recipe) }>
-          <Text>{recipe.name}</Text>
-        </TouchableHighlight>)
-      })}
-    </View>)
-  }
-
-
   // returns filtered array
   filterSearch(){
     let arr = this.state.recipesdb.filter( (recipe) => {
@@ -56,33 +41,21 @@ class BrowseRecipes extends React.Component {
     return arr
   }
 
-  filterHandler = (e) => {
-    this.setState({
-      filter: e.target.value
-    })
-  }
-
-  display(){
-    if(this.state.screen === ""){
-      return this.showBrowseRecipesMenu()
-    }
-    else if (this.state.screen === "recipe"){
-      return <RecipeView recipe={this.state.currentRecipe}/>
-    }
-  }
-
-
-  recipeSwitch = (recipe) => {
-    this.setState({
-      screen: "recipe",
-      currentRecipe: recipe
-    })
+  recipeSwitch(recipe){
+    this.props.navigation.navigate('RecipeView',{recipe: recipe})
   }
 
   render() {
-    return (
-       this.display()
-    )
+    let filteredArr = this.filterSearch()
+    return( <View id="browseRecipes">
+    <Text>Search: </Text>
+    <TextInput style={{backgroundColor: 'white'}} onChangeText={ (text) => this.setState({filter: text}) } value={ this.state.filter }/>
+      {filteredArr.map( (recipe, keyVal) => {
+        return(<TouchableHighlight key={keyVal} style={{backgroundColor: '#66a3ff', marginTop:5}} className="browseRecipe" onPress={ () => this.recipeSwitch(recipe) }>
+          <Text>{recipe.name}</Text>
+        </TouchableHighlight>)
+      })}
+    </View>)
   }
 }
 
