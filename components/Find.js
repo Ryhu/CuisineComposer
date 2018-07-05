@@ -122,22 +122,6 @@ class Find extends React.Component {
     return arr
   }
 
-  filterHandler = (e) => {
-    console.log("start!!!!")
-    console.log(e)
-    console.log(e.target)
-    console.log(e.target.value)
-    this.setState({
-      filter: e.target.value
-    })
-  }
-
-  startSearch = () => {
-    this.setState({
-      screen: "results"
-    })
-  }
-
   reset = () => {
     let combined = this.state.ingredientsdb.concat(this.state.findReqs)
     this.setState({
@@ -155,7 +139,7 @@ class Find extends React.Component {
         })
   }
 
-  showSearchMenu(){
+  render() {
     return (
       <View id="findBox">
         <Text>Find</Text>
@@ -171,31 +155,6 @@ class Find extends React.Component {
         <Button id="findButton" onPress={ this.getResult } title="Find"></Button>
         <Button id="findButton" onPress={ this.reset } title="Reset"></Button>
       </View>
-    )
-  }
-
-  recipeSwitch = (recipe) => {
-    this.setState({
-      screen: "recipe",
-      currentRecipe: recipe
-    })
-  }
-
-  display(){
-    if(this.state.screen === ""){
-      return this.showSearchMenu()
-    }
-    else if (this.state.screen === "results"){
-      return <FindResults recipesdb={this.state.recipesdb} findReqs={this.state.findReqs} action={this.recipeSwitch}/>
-    }
-    else if (this.state.screen === "recipe"){
-      return <RecipeView recipe={this.state.currentRecipe}/>
-    }
-  }
-
-  render() {
-    return (
-       this.display()
     )
   }
 }
