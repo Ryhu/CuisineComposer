@@ -133,10 +133,10 @@ class Find extends React.Component {
 
   getResult = () => {
     this.props.navigation.navigate('FindResults', {
-          recipesdb:this.state.recipesdb,
-          findReqs:this.state.findReqs,
-          action:this.recipeSwitch
-        })
+      recipesdb:this.state.recipesdb,
+      findReqs:this.state.findReqs,
+      action:this.recipeSwitch
+    })
   }
 
   render() {

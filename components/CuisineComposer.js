@@ -11,6 +11,9 @@ import FindResults from '../components/FindResults'
 import Browse from '../components/Browse'
 import Cart from '../components/Cart'
 import Prep from '../components/Prep'
+
+import RecipeView from '../components/RecipeView'
+
 import { createStackNavigator } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 
@@ -28,6 +31,7 @@ const AddStack = createStackNavigator({
 const FindStack = createStackNavigator({
   Find: Find,
   FindResults: FindResults,
+  RecipeView: RecipeView,
 },
 {
   initialRouteName: 'Find',

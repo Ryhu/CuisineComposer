@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View, Text, Image } from "react-native";
+import { Button, View, Text, Image, ScrollView } from "react-native";
 
 
 class CartEdit extends React.Component {
@@ -87,7 +87,7 @@ class CartEdit extends React.Component {
   }
 
   renderIngredients(){
-    return(<View id="cartEditIngredients">
+    return(<ScrollView id="cartEditIngredients">
       {this.state.ingredientsdb.map( (ingredient) => {
         return(<View className="cartEditIngredient">
           <Text>{ingredient.name}</Text>
@@ -97,7 +97,7 @@ class CartEdit extends React.Component {
           <Button title="+" onPress={ () => this.handleMath("+", ingredient) }></Button>
         </View>)
       })}
-    </View>)
+    </ScrollView>)
   }
   //          <Button>-</Button>
 

@@ -9,11 +9,20 @@ const styles = StyleSheet.create({
 
 class FindResults extends React.Component {
 
+
+
+
+  viewRecipe(recipe){
+    this.props.navigation.navigate('RecipeView', {
+      recipe:recipe,
+    })
+  }
+
   renderRecipes(){
     let list = this.reqFilter()
     return(<View>
       { list.map( (i) => {
-        return(<TouchableHighlight style={styles.recipe} className="recipeBox" onPress={ () => this.props.action(i) }>
+        return(<TouchableHighlight style={styles.recipe} className="recipeBox" onPress={ () => this.viewRecipe(i) }>
         <View>
           <Text>{i.name}</Text>
           <Text>{i.time}</Text>
@@ -25,9 +34,9 @@ class FindResults extends React.Component {
   }
 
   reqFilter(){
-    let filteredRecipes = this.props.recipesdb
+    let filteredRecipes = this.props.navigation.getParam('recipesdb')
     // each ingredient in the filters
-    for (let ingredient of this.props.findReqs){
+    for (let ingredient of this.props.navigation.getParam('findReqs')){
       //filter recipies
       filteredRecipes = filteredRecipes.filter( (recipe) => {
         let flag = false
@@ -45,7 +54,6 @@ class FindResults extends React.Component {
 
 
   render(){
-    console.log(this.props.findReqs)
     return(
       <View>
         { this.renderRecipes() }
