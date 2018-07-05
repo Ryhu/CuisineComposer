@@ -33,21 +33,6 @@ class BrowseIngredients extends React.Component {
       })
   }
 
-  showBrowseIngredientsMenu(){
-    let filteredArr = this.filterSearch()
-    return( <View id="browseIngredients">
-      <Text>Search: </Text>
-      <TextInput style={{backgroundColor: 'white'}} onChange={ this.filterHandler } title="Search" value={ this.state.filter }/>
-      {filteredArr.map( (ingredient, keyVal) => {
-        return(<TouchableHighlight key={keyVal} style={{backgroundColor: '#66a3ff', marginTop:5}} className="browseIngredient" onPress={ () => this.ingredientSwitch(ingredient) }>
-          <Text>{ingredient.name}</Text>
-        </TouchableHighlight>)
-      })}
-    </View>)
-  }
-
-
-
   // returns filtered array
   filterSearch(){
     let arr = this.state.ingredientsdb.filter( (recipe) => {
@@ -62,27 +47,24 @@ class BrowseIngredients extends React.Component {
     })
   }
 
-  display(){
-    if(this.state.screen === ""){
-      return this.showBrowseIngredientsMenu()
-    }
-    else if (this.state.screen === "ingredient"){
-      return <IngredientView ingredient={this.state.currentIngredient}/>
-    }
-  }
-
 
   ingredientSwitch = (ingredient) => {
-    this.setState({
-      screen: "ingredient",
-      currentIngredient: ingredient
-    })
+    console.log('hi')
+    this.props.navigation.navigate('IngredientView', { ingredient: ingredient})
   }
 
+
   render() {
-    return (
-       this.display()
-    )
+    let filteredArr = this.filterSearch()
+    return ( <View id="browseIngredients">
+      <Text>Search: </Text>
+      <TextInput style={{backgroundColor: 'white'}} onChange={ this.filterHandler } title="Search" value={ this.state.filter }/>
+      {filteredArr.map( (ingredient, keyVal) => {
+        return(<TouchableHighlight key={keyVal} style={{backgroundColor: '#66a3ff', marginTop:5}} className="browseIngredient" onPress={ () => this.ingredientSwitch(ingredient) }>
+          <Text>{ingredient.name}</Text>
+        </TouchableHighlight>)
+      })}
+    </View>)
   }
 }
 

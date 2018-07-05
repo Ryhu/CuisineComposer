@@ -49,6 +49,8 @@ const BrowseStack = createStackNavigator({
   Browse: Browse,
   BrowseIngredients: BrowseIngredients,
   BrowseRecipes: BrowseRecipes,
+  RecipeView: RecipeView,
+  IngredientView: IngredientView,
 },
 {
   initialRouteName: 'Browse',

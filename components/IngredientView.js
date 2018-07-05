@@ -4,8 +4,8 @@ import { Button, View, Text, Image } from "react-native";
 
 class IngredientView extends React.Component {
 
-  addToCart = () => {
-    console.log(this.props.ingredient)
+  addToCart = (ingredient) => {
+    console.log(ingredient)
     fetch(`http://192.168.2.184:3000/api/v1/shopping_cart_ingredients`, {
       method: "POST",
       headers: {
@@ -14,7 +14,7 @@ class IngredientView extends React.Component {
       },
       body: JSON.stringify({
         item:{
-          ingredient_id: `${this.props.ingredient.id}`,
+          ingredient_id: `${ingredient.id}`,
           shopping_cart_id: 1,
           amount: 1,
         }
@@ -27,8 +27,8 @@ class IngredientView extends React.Component {
           // NEEDS TO CHANGE TO PROPER DYNAMIC AMOUNT
   }
 
-  addToFridge = () => {
-    console.log(this.props.ingredient)
+  addToFridge = (ingredient) => {
+    console.log(ingredient)
     fetch(`http://192.168.2.184:3000/api/v1/fridge_ingredients`, {
       method: "POST",
       headers: {
@@ -37,7 +37,7 @@ class IngredientView extends React.Component {
       },
       body: JSON.stringify({
         item:{
-          ingredient_id: `${this.props.ingredient.id}`,
+          ingredient_id: `${ingredient.id}`,
           fridge_id: 1,
           amount: 1,
         }
@@ -51,14 +51,16 @@ class IngredientView extends React.Component {
   }
 
   render(){
+    let ingredient = this.props.navigation.getParam('ingredient')
+    console.log(ingredient)
     return(
       <View className="recipeScreen">
         <Text>ingredient viewer!</Text>
-        <Text>{ this.props.ingredient.name }</Text>
-        <Text>{ this.props.ingredient.picture }</Text>
-        <Text>{ this.props.ingredient.nutrition }</Text>
-        <Button title="Add To Cart" onPress={this.addToCart}></Button>
-        <Button title="Add To Fridge" onPress={this.addToFridge}></Button>
+        <Text>{ ingredient.name }</Text>
+        <Text>{ ingredient.picture }</Text>
+        <Text>{ ingredient.nutrition }</Text>
+        <Button title="Add To Cart" onPress={ () => this.addToCart(ingredient)}></Button>
+        <Button title="Add To Fridge" onPress={ () => this.addToFridge(ingredient)}></Button>
       </View>
     )
   }
