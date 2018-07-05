@@ -21,10 +21,19 @@ class AddRecipe extends React.Component {
 
   }
 
-  TextInputFieldHandler = (e) => {
-    let key = e.target.dataset.name
+  TextInputFieldHandler = (text, name) => {
     this.setState({
-      [key]: e.target.value
+      [name]: text
+    })
+  }
+
+  reset(){
+    this.setState({
+      screen: "",
+      name: "",
+      time: "",
+      ingredients: "",
+      directions: "",
     })
   }
 
@@ -52,14 +61,10 @@ class AddRecipe extends React.Component {
         console.log(res)
       })
 
+    this.reset()
 
-    this.setState({
-      name:"",
-      picture:"",
-      nutrition:"",
-    })
+    this.props.navigation.navigate('Add')
 
-    this.props.messageAction("added recipe!")
   }
 
 
@@ -69,13 +74,13 @@ class AddRecipe extends React.Component {
       <View >
         <Text>recipe{"\n"}</Text>
         <Text>name: </Text>
-        <TextInput style={{backgroundColor: 'white'}} value={ this.state.name }  onChange={ this.TextInputFieldHandler }/>
+        <TextInput style={{backgroundColor: 'white'}} value={ this.state.name }  onChangeText={ (text) => this.TextInputFieldHandler(text, "name") }/>
         <Text>time: </Text>
-        <TextInput style={{backgroundColor: 'white'}} value={ this.state.time }  onChange={ this.TextInputFieldHandler }/>
+        <TextInput style={{backgroundColor: 'white'}} value={ this.state.time }  onChangeText={ (text) => this.TextInputFieldHandler(text, "time") }/>
         <Text>ingredients: </Text>
-        <TextInput style={{backgroundColor: 'white'}} multiline = {true} value={ this.state.ingredients } onChange={ this.TextInputFieldHandler }></TextInput>
+        <TextInput style={{backgroundColor: 'white'}} multiline = {true} value={ this.state.ingredients } onChangeText={ (text) => this.TextInputFieldHandler(text, "ingredients") }></TextInput>
         <Text>directions: </Text>
-        <TextInput style={{backgroundColor: 'white'}} multiline = {true} value={ this.state.directions }  onChange={ this.TextInputFieldHandler }></TextInput>
+        <TextInput style={{backgroundColor: 'white'}} multiline = {true} value={ this.state.directions }  onChangeText={ (text) => this.TextInputFieldHandler(text, "directions") }></TextInput>
         <Button title="Add Recipe" onPress={ this.submit }/>
       </View>
     )

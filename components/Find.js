@@ -89,9 +89,9 @@ class Find extends React.Component {
   renderFilteredIngredients(){
     let filteredArr = this.filterSearch()
     return(<View className="listedIngredientBox">
-      { filteredArr.map( (i) => {
+      { filteredArr.map( (i, keyVal) => {
         return(
-          <TouchableHighlight className="listedIngredient" onPress={ () => this.addToReqs(i)} style={{marginTop:5, height: 25, backgroundColor: 'powderblue'}}>
+          <TouchableHighlight key={keyVal} className="listedIngredient" onPress={ () => this.addToReqs(i)} style={{marginTop:5, height: 25, backgroundColor: 'powderblue'}}>
             <Text>{i.name}</Text>
           </TouchableHighlight>
         )
@@ -102,9 +102,9 @@ class Find extends React.Component {
   renderReqIngredients(){
     return(<View className="findReqsBox">
 
-      { this.state.findReqs.map( (i) => {
+      { this.state.findReqs.map( (i, keyVal) => {
         return(
-          <TouchableHighlight className="findReqs"  onPress={ () => this.removeFromReqs(i)} style={{marginTop:5, height: 25,backgroundColor: 'powderblue'}}>
+          <TouchableHighlight key={keyVal} className="findReqs"  onPress={ () => this.removeFromReqs(i)} style={{marginTop:5, height: 25,backgroundColor: 'powderblue'}}>
             <Text>{i.name}</Text>
           </TouchableHighlight>
         )

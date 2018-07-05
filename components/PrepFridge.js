@@ -89,8 +89,8 @@ class PrepFridge extends React.Component {
 
   renderIngredients(){
     return(<View id="fridgeEditIngredients">
-      {this.state.ingredientsdb.map( (ingredient) => {
-        return(<View className="fridgeEditIngredient">
+      {this.state.ingredientsdb.map( (ingredient, keyVal) => {
+        return(<View className="fridgeEditIngredient" key={keyVal}>
           <Text>{ingredient.name}</Text>
 
           <Text className="cartEditIngredientCounter">{ingredient.amount}</Text>

@@ -7,9 +7,9 @@ class RecipeView extends React.Component {
   ingredientsSpreader(ingredients){
     return(<View className="recipeIngredients">
 
-      {ingredients.map( (ingredient) => {
+      {ingredients.map( (ingredient, keyVal) => {
         return(
-          <Text>{ingredient.name}</Text>
+          <Text key={keyVal}>{ingredient.name}</Text>
         )
       })}
 

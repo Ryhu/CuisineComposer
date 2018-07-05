@@ -39,8 +39,8 @@ class BrowseRecipes extends React.Component {
     return( <View id="browseRecipes">
     <Text>Search: </Text>
     <TextInput style={{backgroundColor: 'white'}} onChange={ this.filterHandler } value={ this.state.filter }/>
-      {filteredArr.map( (recipe) => {
-        return(<TouchableHighlight style={{backgroundColor: '#66a3ff', marginTop:5}} className="browseRecipe" onPress={ () => this.recipeSwitch(recipe) }>
+      {filteredArr.map( (recipe, keyVal) => {
+        return(<TouchableHighlight key={keyVal} style={{backgroundColor: '#66a3ff', marginTop:5}} className="browseRecipe" onPress={ () => this.recipeSwitch(recipe) }>
           <Text>{recipe.name}</Text>
         </TouchableHighlight>)
       })}

@@ -23,7 +23,6 @@ import PrepPlan from '../components/PrepPlan'
 import RecipeView from '../components/RecipeView'
 import IngredientView from '../components/IngredientView'
 
-
 import { createStackNavigator } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 

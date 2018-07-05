@@ -21,8 +21,8 @@ class FindResults extends React.Component {
   renderRecipes(){
     let list = this.reqFilter()
     return(<View>
-      { list.map( (i) => {
-        return(<TouchableHighlight style={styles.recipe} className="recipeBox" onPress={ () => this.viewRecipe(i) }>
+      { list.map( (i, keyVal) => {
+        return(<TouchableHighlight key={keyVal} style={styles.recipe} className="recipeBox" onPress={ () => this.viewRecipe(i) }>
         <View>
           <Text>{i.name}</Text>
           <Text>{i.time}</Text>

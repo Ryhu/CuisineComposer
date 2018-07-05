@@ -15,11 +15,20 @@ class AddIngredient extends React.Component {
 
   }
 
-  TextInputFieldHandler = (e) => {
-    console.log("im am e")
-    console.log(e.target)
-    console.log(e.target.title)
+  TextInputFieldHandler = (text, name) => {
+    this.setState({
+      [name]: text
+    })
   }
+
+  reset(){
+    this.setState({
+      name:"",
+      picture:"",
+      nutrition:"",
+    })
+  }
+
 
   submit = (e) => {
     e.preventDefault()
@@ -45,13 +54,10 @@ class AddIngredient extends React.Component {
       })
 
 
-    this.setState({
-      name:"",
-      picture:"",
-      nutrition:"",
-    })
+    this.reset()
 
-    this.props.messageAction("added ingredient!")
+    this.props.navigation.navigate('Add')
+
   }
 
   render() {
@@ -59,11 +65,11 @@ class AddIngredient extends React.Component {
       <View className="addForm">
         <Text>ingredients{"\n"}</Text>
         <Text>name: </Text>
-        <TextInput  style={{backgroundColor: 'white'}} value={ this.state.name } name="name" onChange={ () => this.TextInputFieldHandler("name") }/>
+        <TextInput  style={{backgroundColor: 'white'}} value={ this.state.name } onChangeText={ (text) => this.TextInputFieldHandler(text, "name") }/>
         <Text>picture: </Text>
-        <TextInput style={{backgroundColor: 'white'}} value={ this.state.picture } title="picture" onChange={ this.TextInputFieldHandler } />
+        <TextInput style={{backgroundColor: 'white'}} value={ this.state.picture } onChangeText={ (text) => this.TextInputFieldHandler(text, "picture") } />
         <Text>nutrition: </Text>
-        <TextInput style={{backgroundColor: 'white'}} multiline = {true}  value={ this.state.nutrition } data-name="nutrition" onChange={ this.TextInputFieldHandler } ></TextInput>
+        <TextInput style={{backgroundColor: 'white'}} multiline = {true}  value={ this.state.nutrition } onChangeText={ (text) => this.TextInputFieldHandler(text, "nutrition") } ></TextInput>
       <Button onPress={ this.submit } title="Add Ingredient"/>
       </View>
     )

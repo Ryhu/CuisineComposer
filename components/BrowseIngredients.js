@@ -38,8 +38,8 @@ class BrowseIngredients extends React.Component {
     return( <View id="browseIngredients">
       <Text>Search: </Text>
       <TextInput style={{backgroundColor: 'white'}} onChange={ this.filterHandler } title="Search" value={ this.state.filter }/>
-      {filteredArr.map( (ingredient) => {
-        return(<TouchableHighlight style={{backgroundColor: '#66a3ff', marginTop:5}} className="browseIngredient" onPress={ () => this.ingredientSwitch(ingredient) }>
+      {filteredArr.map( (ingredient, keyVal) => {
+        return(<TouchableHighlight key={keyVal} style={{backgroundColor: '#66a3ff', marginTop:5}} className="browseIngredient" onPress={ () => this.ingredientSwitch(ingredient) }>
           <Text>{ingredient.name}</Text>
         </TouchableHighlight>)
       })}

@@ -101,10 +101,10 @@ class CartActivate extends React.Component {
       <View id="cartIngredients">
 
         <View id="cartIngredientsUntapped">
-        {this.state.ingredientsdb.map( (ingredient) => {
+        {this.state.ingredientsdb.map( (ingredient, keyVal) => {
           if(!ingredient.inCart){
             return(
-              <TouchableHighlight onPress={() => this.touchIngredient(ingredient)}>
+              <TouchableHighlight key={keyVal} onPress={() => this.touchIngredient(ingredient)}>
                 <Text style={{color:'white', backgroundColor: "blue"}}>{ingredient.name}, {ingredient.amount}</Text>
               </TouchableHighlight>
             )
@@ -113,11 +113,11 @@ class CartActivate extends React.Component {
         </View>
 
         <View id="cartIngredientsTapped">
-        {this.state.ingredientsdb.map( (ingredient) => {
+        {this.state.ingredientsdb.map( (ingredient, keyVal) => {
           if(ingredient.inCart){
             return(
 
-              <TouchableHighlight onPress={() => this.touchIngredient(ingredient)}>
+              <TouchableHighlight key={keyVal} onPress={() => this.touchIngredient(ingredient)}>
                 <Text style={{color:'white', backgroundColor: "red"}}>{ingredient.name}, {ingredient.amount}</Text>
               </TouchableHighlight>
 

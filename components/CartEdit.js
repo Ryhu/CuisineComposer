@@ -88,8 +88,8 @@ class CartEdit extends React.Component {
 
   renderIngredients(){
     return(<ScrollView id="cartEditIngredients">
-      {this.state.ingredientsdb.map( (ingredient) => {
-        return(<View className="cartEditIngredient">
+      {this.state.ingredientsdb.map( (ingredient, keyVal) => {
+        return(<View className="cartEditIngredient" key={keyVal}>
           <Text>{ingredient.name}</Text>
 
           <Text className="cartEditIngredientCounter">{ingredient.amount}</Text>
