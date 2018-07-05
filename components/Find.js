@@ -123,6 +123,10 @@ class Find extends React.Component {
   }
 
   filterHandler = (e) => {
+    console.log("start!!!!")
+    console.log(e)
+    console.log(e.target)
+    console.log(e.target.value)
     this.setState({
       filter: e.target.value
     })
@@ -143,11 +147,19 @@ class Find extends React.Component {
     })
   }
 
+  getResult = () => {
+    this.props.navigation.navigate('FindResults', {
+          recipesdb:this.state.recipesdb,
+          findReqs:this.state.findReqs,
+          action:this.recipeSwitch
+        })
+  }
+
   showSearchMenu(){
     return (
       <View id="findBox">
         <Text>Find</Text>
-        <TextInput style={{backgroundColor: 'white'}} onChange={ this.filterHandler } value={ this.state.filter }/>
+        <TextInput style={{backgroundColor: 'white'}} onChangeText={ (text) => this.setState({filter: text}) } value={ this.state.filter }/>
         <View id="itemsListBox">
           <Text>All Ingredients</Text>
           { this.renderFilteredIngredients()}
@@ -156,7 +168,7 @@ class Find extends React.Component {
           <Text>Search For: </Text>
           { this.renderReqIngredients()}
         </View>
-        <Button id="findButton" onPress={ this.startSearch } title="Find"></Button>
+        <Button id="findButton" onPress={ this.getResult } title="Find"></Button>
         <Button id="findButton" onPress={ this.reset } title="Reset"></Button>
       </View>
     )

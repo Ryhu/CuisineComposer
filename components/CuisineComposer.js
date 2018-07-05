@@ -38,7 +38,7 @@ const FindStack = createStackNavigator({
 
 
 export default createMaterialBottomTabNavigator({
-  Find: Find,
+  Find: FindStack,
   Add: AddStack,
   Browse: Browse,
   Cart: Cart,
