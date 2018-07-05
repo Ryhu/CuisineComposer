@@ -47,8 +47,8 @@ const AddStack = createStackNavigator({
 
 const BrowseStack = createStackNavigator({
   Browse: Browse,
-  BrowseIngredient: BrowseIngredients,
-  BrowseRecipe: BrowseRecipes,
+  BrowseIngredients: BrowseIngredients,
+  BrowseRecipes: BrowseRecipes,
 },
 {
   initialRouteName: 'Browse',
@@ -77,9 +77,9 @@ const PrepStack = createStackNavigator({
 export default createMaterialBottomTabNavigator({
   Find: FindStack,
   Add: AddStack,
-  Browse: Browse,
-  Cart: Cart,
-  Prep: Prep,
+  Browse: BrowseStack,
+  Cart: CartStack,
+  Prep: PrepStack,
 }, {
   shifting:false,
   labeled:true,
