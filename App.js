@@ -5,13 +5,10 @@ import { createStackNavigator } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator } from 'react-navigation';
 
-
 export default class AppScreen extends Component {
   render() {
     return (
-      <ScrollView className="App" style={{backgroundColor: '#b3ffb3'}}>
         <CuisineComposer />
-      </ScrollView>
     );
   }
 }

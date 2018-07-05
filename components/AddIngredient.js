@@ -16,10 +16,9 @@ class AddIngredient extends React.Component {
   }
 
   TextInputFieldHandler = (e) => {
-    let key = e.target.dataset.name
-    this.setState({
-      [key]: e.target.value
-    })
+    console.log("im am e")
+    console.log(e.target)
+    console.log(e.target.title)
   }
 
   submit = (e) => {
@@ -57,13 +56,16 @@ class AddIngredient extends React.Component {
 
   render() {
     return (
-      <form className="addForm">
+      <View className="addForm">
         <Text>ingredients{"\n"}</Text>
-        name: <TextInput  style={{backgroundColor: 'white'}} value={ this.state.name } data-name="name" onChange={ this.TextInputFieldHandler }/>
-        picture: <TextInput style={{backgroundColor: 'white'}} value={ this.state.picture } data-name="picture" onChange={ this.TextInputFieldHandler } />
-        nutrition: <textarea style={{backgroundColor: 'white'}}rows='6' value={ this.state.nutrition } data-name="nutrition" onChange={ this.TextInputFieldHandler } ></textarea>
+        <Text>name: </Text>
+        <TextInput  style={{backgroundColor: 'white'}} value={ this.state.name } name="name" onChange={ () => this.TextInputFieldHandler("name") }/>
+        <Text>picture: </Text>
+        <TextInput style={{backgroundColor: 'white'}} value={ this.state.picture } title="picture" onChange={ this.TextInputFieldHandler } />
+        <Text>nutrition: </Text>
+        <TextInput style={{backgroundColor: 'white'}} multiline = {true}  value={ this.state.nutrition } data-name="nutrition" onChange={ this.TextInputFieldHandler } ></TextInput>
       <Button onPress={ this.submit } title="Add Ingredient"/>
-      </form>
+      </View>
     )
   }
 }
