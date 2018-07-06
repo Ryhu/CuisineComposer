@@ -145,10 +145,6 @@ class Find extends React.Component {
     })
   }
 
-  // componentDidMount(){
-  //   this.toggleBar()
-  // }
-
   toggleBar = () => {
     const newState = !this.state.shown
     this.setState({shown:newState})
@@ -178,13 +174,11 @@ class Find extends React.Component {
         ],
         left:-1,
       }
-
     })
 
     return (
       <View>
         <ScrollView style={styles.findView}>
-          <Text>Find</Text>
           <TextInput style={{backgroundColor: 'white'}} onChangeText={ (text) => this.setState({filter: text}) } value={ this.state.filter }/>
           <View >
             <Text>All Ingredients</Text>

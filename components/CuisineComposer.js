@@ -81,29 +81,84 @@ const AddStack = createStackNavigator({
 });
 
 const BrowseStack = createStackNavigator({
-  Browse: Browse,
-  BrowseIngredients: BrowseIngredients,
-  BrowseRecipes: BrowseRecipes,
-  RecipeView: RecipeView,
-  IngredientView: IngredientView,
+  Browse: {
+    screen: Browse,
+    navigationOptions: () => ({
+      title: "Browse",
+    }),
+  },
+  BrowseIngredients: {
+    screen: BrowseIngredients,
+    navigationOptions: () => ({
+      title: "Browse Ingredients",
+    }),
+  },
+  BrowseRecipes: {
+    screen: BrowseRecipes,
+    navigationOptions: () => ({
+      title: "Browse Recipes",
+    }),
+  },
+  RecipeView: {
+    screen: RecipeView,
+    navigationOptions: () => ({
+      title: "Recipe",
+    }),
+  },
+  IngredientView: {
+    screen: IngredientView,
+    navigationOptions: () => ({
+      title: "Ingredient",
+    }),
+  },
 },
 {
   initialRouteName: 'Browse',
 });
 
 const CartStack = createStackNavigator({
-  Cart: Cart,
-  CartActivate: CartActivate,
-  CartEdit: CartEdit,
+  Cart: {
+    screen: Cart,
+    navigationOptions: () => ({
+      title: "Cart",
+    }),
+  },
+  CartActivate: {
+    screen: CartActivate,
+    navigationOptions: () => ({
+      title: "Shopping List",
+    }),
+  },
+  CartEdit: {
+    screen: CartEdit,
+    navigationOptions: () => ({
+      title: "Edit List",
+    }),
+  },
 },
 {
   initialRouteName: 'Cart',
 });
 
 const PrepStack = createStackNavigator({
-  Prep: Prep,
-  PrepFridge: PrepFridge,
-  PrepPlan: PrepPlan,
+  Prep: {
+    screen: Prep,
+    navigationOptions: () => ({
+      title: "Prep",
+    }),
+  },
+  PrepFridge: {
+    screen: PrepFridge,
+    navigationOptions: () => ({
+      title: "Fridge",
+    }),
+  },
+  PrepPlan: {
+    screen: PrepPlan,
+    navigationOptions: () => ({
+      title: "Plan",
+    }),
+  },
 },
 {
   initialRouteName: 'Prep',

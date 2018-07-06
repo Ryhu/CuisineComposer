@@ -57,7 +57,6 @@ class FindResults extends React.Component {
     return(
       <View>
         { this.renderRecipes() }
-        <Text>hi</Text>
       </View>
     )
   }

@@ -12,7 +12,6 @@ class Add extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Add</Text>
         <TouchableOpacity style={styles.bigButton} onPress={() => this.props.navigation.navigate('AddIngredient')}><Text style={styles.bigButtonText}>Add Ingredient</Text></TouchableOpacity>
         <TouchableOpacity style={styles.bigButton} onPress={() => this.props.navigation.navigate('AddRecipe')}><Text style={styles.bigButtonText}>Add Recipe</Text></TouchableOpacity>
       </View>
