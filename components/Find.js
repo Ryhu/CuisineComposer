@@ -1,9 +1,11 @@
 import React from 'react';
 import FindResults from './FindResults'
 import RecipeView from './RecipeView'
-import { Button, ScrollView, Text, Image, TextInput, TouchableOpacity, View } from "react-native";
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Button, StyleSheet, ScrollView, Text, Image, TextInput, TouchableOpacity, View, Dimensions, Animated } from "react-native";
 import styles from '../components/stylesheet'
 
+const width = Dimensions.get('window').width
 
 class Find extends React.Component {
 
@@ -16,7 +18,9 @@ class Find extends React.Component {
       ingredientsdb: [],
       findReqs: [],
       filter: "",
-      currentRecipe: null
+      currentRecipe: null,
+      animated: new Animated.Value(0),
+      shown:false,
     }
 
   }
@@ -93,7 +97,7 @@ class Find extends React.Component {
     return(<View style={styles.container}>
       { filteredArr.map( (i, keyVal) => {
         return(
-          <TouchableOpacity key={keyVal} className="listedIngredient" onPress={ () => this.addToReqs(i)} style={styles.findIngredient}>
+          <TouchableOpacity key={keyVal} onPress={ () => this.addToReqs(i)} style={styles.findIngredient}>
             <Text style={styles.container}>{i.name}</Text>
           </TouchableOpacity>
         )
@@ -106,7 +110,7 @@ class Find extends React.Component {
 
       { this.state.findReqs.map( (i, keyVal) => {
         return(
-          <TouchableOpacity key={keyVal} className="findReqs"  onPress={ () => this.removeFromReqs(i)} style={{marginTop:5, height: 25,backgroundColor: 'powderblue'}}>
+          <TouchableOpacity key={keyVal} onPress={ () => this.removeFromReqs(i)} style={styles.reqIngredient}>
             <Text style={styles.container}>{i.name}</Text>
           </TouchableOpacity>
         )
@@ -141,22 +145,82 @@ class Find extends React.Component {
     })
   }
 
+  // componentDidMount(){
+  //   this.toggleBar()
+  // }
+
+  toggleBar = () => {
+    const newState = !this.state.shown
+    this.setState({shown:newState})
+    Animated.timing(this.state.animated,{
+      toValue:newState?1:0,
+      duration:250,
+    }).start()
+  }
+
+
   render() {
+
+    const anistyles = StyleSheet.create({
+      pullOutTab:{
+        position:'absolute',
+        height:600,
+        width:300,
+        backgroundColor:'green',
+        position:'absolute',
+        transform:[
+          {
+            translateX:this.state.animated.interpolate({
+              inputRange:[0,1],
+              outputRange:[-270,1]
+            })
+          }
+        ],
+        left:-1,
+      }
+
+    })
+
     return (
-      <ScrollView >
-        <Text>Find</Text>
-        <TextInput style={{backgroundColor: 'white'}} onChangeText={ (text) => this.setState({filter: text}) } value={ this.state.filter }/>
-        <View >
-          <Text>All Ingredients</Text>
-          { this.renderFilteredIngredients()}
-        </View>
-        <View >
-          <Text>Search For: </Text>
-          { this.renderReqIngredients()}
-        </View>
-        <Button id="findButton" onPress={ this.getResult } title="Find"></Button>
-        <Button id="findButton" onPress={ this.reset } title="Reset"></Button>
-      </ScrollView>
+      <View>
+        <ScrollView style={styles.findView}>
+          <Text>Find</Text>
+          <TextInput style={{backgroundColor: 'white'}} onChangeText={ (text) => this.setState({filter: text}) } value={ this.state.filter }/>
+          <View >
+            <Text>All Ingredients</Text>
+            { this.renderFilteredIngredients()}
+          </View>
+        </ScrollView>
+
+        <Animated.View style={anistyles.pullOutTab}>
+          <ScrollView contentContainerStyle={[styles.container, {marginRight:30, paddingBottom:60}]}>
+              <Text style={{color:'white', textAlign:'center', fontWeight:'bold', marginTop:30}}>Search for recipes with these Ingredients:</Text>
+              { this.renderReqIngredients()}
+              <TouchableOpacity style={styles.findReqButton} onPress={ this.getResult }>
+                <Text style={{color:'white'}}>Find</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.findReqButton} onPress={ this.reset }>
+                <Text style={{color:'white'}}>Reset</Text>
+              </TouchableOpacity>
+          </ScrollView>
+          <TouchableOpacity onPress={this.toggleBar} style={styles.pullOutTrigger}>
+            <Ionicons name='md-send' />
+            <Ionicons name='md-send' />
+            <Ionicons name='md-send' />
+          </TouchableOpacity>
+        </Animated.View>
+
+
+
+
+
+
+
+
+
+
+
+      </View>
     )
   }
 }

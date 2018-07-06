@@ -1,6 +1,5 @@
 import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { View, Text, Button, StyleSheet } from 'react-native';
 
 
@@ -31,18 +30,51 @@ import { createMaterialBottomTabNavigator } from 'react-navigation-material-bott
 
 
 const FindStack = createStackNavigator({
-  Find: Find,
-  FindResults: FindResults,
-  RecipeView: RecipeView,
+
+  Find: {
+    screen: Find,
+    navigationOptions: () => ({
+      title: "Find",
+    }),
+  },
+
+  FindResults: {
+    screen: FindResults,
+    navigationOptions: () => ({
+      title: "Results",
+    }),
+  },
+
+  RecipeView: {
+    screen: RecipeView,
+    navigationOptions: () => ({
+      title: "Recipe",
+    }),
+  },
 },
 {
   initialRouteName: 'Find',
 });
 
 const AddStack = createStackNavigator({
-  Add: Add,
-  AddIngredient: AddIngredient,
-  AddRecipe: AddRecipe,
+  Add: {
+    screen: Add,
+    navigationOptions: () => ({
+      title: "Add",
+    }),
+  },
+  AddIngredient: {
+    screen: AddIngredient,
+    navigationOptions: () => ({
+      title: "Add Ingredient",
+    }),
+  },
+  AddRecipe: {
+    screen: AddRecipe,
+    navigationOptions: () => ({
+      title: "Add Recipe",
+    }),
+  },
 },
 {
   initialRouteName: 'Add',
