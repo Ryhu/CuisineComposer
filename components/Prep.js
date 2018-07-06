@@ -1,17 +1,17 @@
 import React from 'react';
 import PrepFridge from '../components/PrepFridge'
 import PrepPlan from '../components/PrepPlan'
-import { Button, View, Text, Image } from "react-native";
-
+import { TouchableOpacity, View, Text, Image } from "react-native";
+import styles from '../components/stylesheet'
 
 class Prep extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Text>Prep</Text>
-        <Button onPress={ () => this.props.navigation.navigate('PrepFridge') } title="Fridge"></Button>
-        <Button onPress={ () => this.props.navigation.navigate('PrepFridge') } title="Plan"></Button>
+        <TouchableOpacity style={styles.bigButton} onPress={() => this.props.navigation.navigate('PrepFridge')}><Text style={styles.bigButtonText}>Fridge</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.bigButton} onPress={() => this.props.navigation.navigate('PrepPlan')}><Text style={styles.bigButtonText}>Plan</Text></TouchableOpacity>
       </View>
     )
   }

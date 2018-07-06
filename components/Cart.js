@@ -1,17 +1,17 @@
 import React from 'react';
 import CartActivate from "./CartActivate"
 import CartEdit from "./CartEdit"
-import { Button, View, Text } from "react-native";
-
+import { TouchableOpacity, View, Text } from "react-native";
+import styles from '../components/stylesheet'
 
 class Cart extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Text>Cart</Text>
-        <Button className="addButtons" onPress={ () => this.props.navigation.navigate('CartEdit') } title="edit Cart"></Button>
-        <Button className="addButtons" onPress={ () => this.props.navigation.navigate('CartActivate') } title="Activate Cart"></Button>
+        <TouchableOpacity style={styles.bigButton} onPress={() => this.props.navigation.navigate('CartEdit')}><Text style={styles.bigButtonText}>Edit Cart</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.bigButton} onPress={() => this.props.navigation.navigate('CartActivate')}><Text style={styles.bigButtonText}>List</Text></TouchableOpacity>
       </View>
     )
   }

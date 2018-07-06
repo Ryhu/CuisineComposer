@@ -1,5 +1,8 @@
 import React from 'react';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { View, Text, Button, StyleSheet } from 'react-native';
+
 
 import Add from '../components/Add'
 import AddIngredient from '../components/AddIngredient'
@@ -82,7 +85,37 @@ export default createMaterialBottomTabNavigator({
   Browse: BrowseStack,
   Cart: CartStack,
   Prep: PrepStack,
-}, {
+},
+{ navigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, tintColor }) => {
+        const { routeName } = navigation.state;
+        let iconName;
+
+        switch(routeName){
+          case 'Find':
+            iconName = `ios-search`;
+            break;
+          case 'Add':
+            iconName = `md-add`;
+            break;
+          case 'Browse':
+            iconName = `md-book`;
+            break;
+          case 'Cart':
+            iconName = `md-cart`;
+            break;
+          case 'Prep':
+            iconName = `md-calendar`;
+            break;
+        }
+        // md-filing
+
+
+        // You can return any component that you like here! We usually use an
+        // icon component from react-native-vector-icons
+        return <Ionicons name={iconName} size={25} color={tintColor} />;
+      },
+    }),
   shifting:false,
   labeled:true,
   initialRouteName: 'Add',

@@ -1,7 +1,9 @@
 import React from 'react';
 import FindResults from './FindResults'
 import RecipeView from './RecipeView'
-import { Button, View, Text, Image, TextInput, TouchableHighlight } from "react-native";
+import { Button, ScrollView, Text, Image, TextInput, TouchableOpacity, View } from "react-native";
+import styles from '../components/stylesheet'
+
 
 class Find extends React.Component {
 
@@ -88,25 +90,25 @@ class Find extends React.Component {
 
   renderFilteredIngredients(){
     let filteredArr = this.filterSearch()
-    return(<View className="listedIngredientBox">
+    return(<View style={styles.container}>
       { filteredArr.map( (i, keyVal) => {
         return(
-          <TouchableHighlight key={keyVal} className="listedIngredient" onPress={ () => this.addToReqs(i)} style={{marginTop:5, height: 25, backgroundColor: 'powderblue'}}>
-            <Text>{i.name}</Text>
-          </TouchableHighlight>
+          <TouchableOpacity key={keyVal} className="listedIngredient" onPress={ () => this.addToReqs(i)} style={styles.findIngredient}>
+            <Text style={styles.container}>{i.name}</Text>
+          </TouchableOpacity>
         )
       })}
     </View>)
   }
 
   renderReqIngredients(){
-    return(<View className="findReqsBox">
+    return(<View style={styles.container}>
 
       { this.state.findReqs.map( (i, keyVal) => {
         return(
-          <TouchableHighlight key={keyVal} className="findReqs"  onPress={ () => this.removeFromReqs(i)} style={{marginTop:5, height: 25,backgroundColor: 'powderblue'}}>
-            <Text>{i.name}</Text>
-          </TouchableHighlight>
+          <TouchableOpacity key={keyVal} className="findReqs"  onPress={ () => this.removeFromReqs(i)} style={{marginTop:5, height: 25,backgroundColor: 'powderblue'}}>
+            <Text style={styles.container}>{i.name}</Text>
+          </TouchableOpacity>
         )
       })}
 
@@ -141,20 +143,20 @@ class Find extends React.Component {
 
   render() {
     return (
-      <View id="findBox">
+      <ScrollView >
         <Text>Find</Text>
         <TextInput style={{backgroundColor: 'white'}} onChangeText={ (text) => this.setState({filter: text}) } value={ this.state.filter }/>
-        <View id="itemsListBox">
+        <View >
           <Text>All Ingredients</Text>
           { this.renderFilteredIngredients()}
         </View>
-        <View id="reqBox">
+        <View >
           <Text>Search For: </Text>
           { this.renderReqIngredients()}
         </View>
         <Button id="findButton" onPress={ this.getResult } title="Find"></Button>
         <Button id="findButton" onPress={ this.reset } title="Reset"></Button>
-      </View>
+      </ScrollView>
     )
   }
 }

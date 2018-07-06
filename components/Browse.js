@@ -2,16 +2,17 @@ import React from 'react';
 import RecipeView from './RecipeView'
 import BrowseRecipes from './BrowseRecipes'
 import BrowseIngredients from './BrowseIngredients'
-import { Button, View, Text, Image } from "react-native";
+import { TouchableOpacity, View, Text, Image } from "react-native";
+import styles from '../components/stylesheet'
 
 class Browse extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Text>Browse</Text>
-        <Button onPress={ () => this.props.navigation.navigate('BrowseIngredients') } title="Browse Ingredients"></Button>
-        <Button onPress={ () => this.props.navigation.navigate('BrowseRecipes') } title="Browse Recipes"></Button>
+        <TouchableOpacity style={styles.bigButton} onPress={() => this.props.navigation.navigate('BrowseIngredients')}><Text style={styles.bigButtonText}>Browse{"\n"}Ingredients</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.bigButton} onPress={() => this.props.navigation.navigate('BrowseRecipes')}><Text style={styles.bigButtonText}>Browse Recipes</Text></TouchableOpacity>
       </View>
     )
   }

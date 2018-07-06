@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View, Text, Image, TouchableHighlight, StyleSheet } from "react-native";
+import { Button, View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   recipe: {
     marginTop:5,
@@ -22,13 +22,13 @@ class FindResults extends React.Component {
     let list = this.reqFilter()
     return(<View>
       { list.map( (i, keyVal) => {
-        return(<TouchableHighlight key={keyVal} style={styles.recipe} className="recipeBox" onPress={ () => this.viewRecipe(i) }>
+        return(<TouchableOpacity key={keyVal} style={styles.recipe} className="recipeBox" onPress={ () => this.viewRecipe(i) }>
         <View>
           <Text>{i.name}</Text>
           <Text>{i.time}</Text>
           <Text>{i.directions}</Text>
         </View>
-        </TouchableHighlight>)
+        </TouchableOpacity>)
       })}
     </View>)
   }

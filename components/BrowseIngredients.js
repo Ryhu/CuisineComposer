@@ -1,6 +1,6 @@
 import React from 'react';
 import IngredientView from './IngredientView'
-import { Button, View, Text, Image, TextInput, TouchableHighlight } from "react-native";
+import { Button, View, Text, Image, TextInput, TouchableOpacity } from "react-native";
 
 class BrowseIngredients extends React.Component {
 
@@ -50,9 +50,9 @@ class BrowseIngredients extends React.Component {
       <Text>Search: </Text>
       <TextInput style={{backgroundColor: 'white'}} onChangeText={ (text) => this.setState({filter: text}) } title="Search" value={ this.state.filter }/>
       {filteredArr.map( (ingredient, keyVal) => {
-        return(<TouchableHighlight key={keyVal} style={{backgroundColor: '#66a3ff', marginTop:5}} onPress={ () => this.ingredientSwitch(ingredient) }>
+        return(<TouchableOpacity key={keyVal} style={{backgroundColor: '#66a3ff', marginTop:5}} onPress={ () => this.ingredientSwitch(ingredient) }>
           <Text>{ingredient.name}</Text>
-        </TouchableHighlight>)
+        </TouchableOpacity>)
       })}
     </View>)
   }

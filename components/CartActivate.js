@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View, Text, Image, TextInput, TouchableHighlight } from "react-native";
+import { Button, View, Text, Image, TextInput, TouchableOpacity } from "react-native";
 
 
 class CartActivate extends React.Component {
@@ -103,9 +103,9 @@ class CartActivate extends React.Component {
         {this.state.ingredientsdb.map( (ingredient, keyVal) => {
           if(!ingredient.inCart){
             return(
-              <TouchableHighlight key={keyVal} onPress={() => this.touchIngredient(ingredient)}>
+              <TouchableOpacity key={keyVal} onPress={() => this.touchIngredient(ingredient)}>
                 <Text style={{color:'white', backgroundColor: "blue"}}>{ingredient.name}, {ingredient.amount}</Text>
-              </TouchableHighlight>
+              </TouchableOpacity>
             )
           }
         })}
@@ -116,9 +116,9 @@ class CartActivate extends React.Component {
           if(ingredient.inCart){
             return(
 
-              <TouchableHighlight key={keyVal} onPress={() => this.touchIngredient(ingredient)}>
+              <TouchableOpacity key={keyVal} onPress={() => this.touchIngredient(ingredient)}>
                 <Text style={{color:'white', backgroundColor: "red"}}>{ingredient.name}, {ingredient.amount}</Text>
-              </TouchableHighlight>
+              </TouchableOpacity>
 
             )
           }
