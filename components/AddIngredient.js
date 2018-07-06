@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View, Text, Image, TextInput } from "react-native";
+import { Button, View, Text, Image, TextInput, Alert } from "react-native";
 
 
 class AddIngredient extends React.Component {
@@ -58,6 +58,7 @@ class AddIngredient extends React.Component {
 
     this.props.navigation.navigate('Add')
 
+    Alert.alert("Added!",`Ingredient was added to the database`)
   }
 
   render() {

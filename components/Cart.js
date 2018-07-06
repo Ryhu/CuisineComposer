@@ -9,7 +9,6 @@ class Cart extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Cart</Text>
         <TouchableOpacity style={styles.bigButton} onPress={() => this.props.navigation.navigate('CartEdit')}><Text style={styles.bigButtonText}>Edit Cart</Text></TouchableOpacity>
         <TouchableOpacity style={styles.bigButton} onPress={() => this.props.navigation.navigate('CartActivate')}><Text style={styles.bigButtonText}>List</Text></TouchableOpacity>
       </View>

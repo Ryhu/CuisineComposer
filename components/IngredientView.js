@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View, Text, Image } from "react-native";
+import { Button, View, Text, Image, Alert } from "react-native";
 
 
 class IngredientView extends React.Component {
@@ -25,6 +25,7 @@ class IngredientView extends React.Component {
         console.log(res)
       })
           // NEEDS TO CHANGE TO PROPER DYNAMIC AMOUNT
+      Alert.alert("Added!", "Ingredient Added to Cart!")
   }
 
   addToFridge = (ingredient) => {
@@ -48,6 +49,7 @@ class IngredientView extends React.Component {
         console.log(res)
       })
           // NEEDS TO CHANGE TO PROPER DYNAMIC AMOUNT
+      Alert.alert("Added!", "Ingredient Added to Fridge!")
   }
 
   render(){

@@ -9,7 +9,6 @@ class Prep extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Prep</Text>
         <TouchableOpacity style={styles.bigButton} onPress={() => this.props.navigation.navigate('PrepFridge')}><Text style={styles.bigButtonText}>Fridge</Text></TouchableOpacity>
         <TouchableOpacity style={styles.bigButton} onPress={() => this.props.navigation.navigate('PrepPlan')}><Text style={styles.bigButtonText}>Plan</Text></TouchableOpacity>
       </View>

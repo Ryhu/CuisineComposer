@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View, Text, Image } from "react-native";
+import { Button, View, Text, Image, Alert } from "react-native";
 
 
 class RecipeView extends React.Component {
@@ -20,6 +20,7 @@ class RecipeView extends React.Component {
     for (let ingredient of recipe.ingredients){
       this.addToCart(ingredient)
     }
+    Alert.alert("Added!", "Ingredients Added to Cart!")
   }
 
   addToCart = (ingredient) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View, Text, Image, TextInput, TouchableOpacity } from "react-native";
+import { Button, View, Text, Image, TextInput, TouchableOpacity, Alert } from "react-native";
 
 
 class CartActivate extends React.Component {
@@ -47,6 +47,7 @@ class CartActivate extends React.Component {
       this.addToFridge(ingredient)
       this.deleteFromCart(ingredient)
     }
+    Alert.alert("Added!", "Ingredients Added to Fridge!")
   }
   addToFridge = (ingredient) => {
     fetch(`http://192.168.2.184:3000/api/v1/fridge_ingredients`, {

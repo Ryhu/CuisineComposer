@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View, Text, Image, TextInput, StyleSheet } from "react-native";
+import { Button, View, Text, Image, TextInput, StyleSheet, Alert } from "react-native";
 const styles = StyleSheet.create({
   multiline:{
     backgroundColor: 'white',
@@ -65,6 +65,7 @@ class AddRecipe extends React.Component {
 
     this.props.navigation.navigate('Add')
 
+    Alert.alert("Added!",`Recipe was added to the database`)
   }
 
 
