@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View, Text, Image, TextInput, Alert } from "react-native";
+import { Button, View, Text, Image, TextInput, Alert, TouchableOpacity } from "react-native";
 
 
 class AddIngredient extends React.Component {
@@ -61,6 +61,27 @@ class AddIngredient extends React.Component {
     Alert.alert("Added!",`Ingredient was added to the database`)
   }
 
+
+
+
+
+
+
+
+  files = () => {
+    Expo.FileSystem.downloadAsync('https://i.imgur.com/LdWshnr.jpg',
+      Expo.FileSystem.documentDirectory + 'lettuce')
+      .then(res => console.log(res))
+    Expo.FileSystem.downloadAsync('https://i.imgur.com/3xQFylk.jpg',
+      Expo.FileSystem.documentDirectory + 'steak')
+      .then(res => console.log(res))
+    Expo.FileSystem.downloadAsync('https://i.imgur.com/abHVCLg.jpg',
+      Expo.FileSystem.documentDirectory + 'peppers')
+      .then(res => console.log(res))
+
+  }
+
+
   render() {
     return (
       <View className="addForm">
@@ -72,9 +93,17 @@ class AddIngredient extends React.Component {
         <Text>nutrition: </Text>
         <TextInput style={{backgroundColor: 'white'}} multiline = {true}  value={ this.state.nutrition } onChangeText={ (text) => this.TextInputFieldHandler(text, "nutrition") } ></TextInput>
       <Button onPress={ this.submit } title="Add Ingredient"/>
+
+
+        <TouchableOpacity onPress={this.files}><Text style={{fontSize:30}}>filesystem</Text></TouchableOpacity>
+        <TouchableOpacity onPress={this.filesfun}><Text>filsys funtimes</Text></TouchableOpacity>
+        <Image source={{uri: 'https://i.vimeocdn.com/portrait/58832_300x300.jpg'}} style={{width: 300, height: 300}}/>
+        <Image source={{uri: Expo.FileSystem.documentDirectory + 'pictures'}} style={{width: 300, height: 300}}/>
       </View>
     )
   }
 }
+
+
 
 export default AddIngredient;

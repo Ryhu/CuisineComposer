@@ -1,6 +1,7 @@
 import React from 'react';
 import IngredientView from './IngredientView'
-import { Button, View, Text, Image, TextInput, TouchableOpacity } from "react-native";
+import { Button, View, Text, Image, TextInput, TouchableOpacity, ScrollView } from "react-native";
+import styles from '../components/stylesheet'
 
 class BrowseIngredients extends React.Component {
 
@@ -31,6 +32,29 @@ class BrowseIngredients extends React.Component {
       })
   }
 
+  renderFilteredIngredients(){
+    let filteredArr = this.filterSearch()
+    return(<View style={styles.container}>
+      { filteredArr.map( (i, keyVal) => {
+          return(
+            <TouchableOpacity key={keyVal} onPress={ () => this.ingredientSwitch(i)} style={styles.findIngredient}>
+              <Image source={{uri: Expo.FileSystem.documentDirectory + i.name}} style={{width: 300, height: 50}}/>
+              <Text style={[styles.container,{
+                textShadowColor: 'black',
+                textShadowOffset: {width: -1, height: 1},
+                textShadowRadius: 10,
+                color:'white',
+                paddingLeft:5,
+                paddingRight:5,
+                position:'absolute',
+              }]}>{i.name}</Text>
+            </TouchableOpacity>
+          )
+
+      })}
+    </View>)
+  }
+
   // returns filtered array
   filterSearch(){
     let arr = this.state.ingredientsdb.filter( (recipe) => {
@@ -45,15 +69,10 @@ class BrowseIngredients extends React.Component {
 
 
   render() {
-    let filteredArr = this.filterSearch()
     return ( <View>
-      <Text>Search: </Text>
-      <TextInput style={{backgroundColor: 'white'}} onChangeText={ (text) => this.setState({filter: text}) } title="Search" value={ this.state.filter }/>
-      {filteredArr.map( (ingredient, keyVal) => {
-        return(<TouchableOpacity key={keyVal} style={{backgroundColor: '#66a3ff', marginTop:5}} onPress={ () => this.ingredientSwitch(ingredient) }>
-          <Text>{ingredient.name}</Text>
-        </TouchableOpacity>)
-      })}
+      <View style={styles.container}><Text>Search: </Text></View>
+      <TextInput style={{backgroundColor: 'white', marginBottom:10, marginTop:10, fontSize:18}} placeholder="Search Ingredients..." onChangeText={ (text) => this.setState({filter: text}) } title="Search" value={ this.state.filter }/>
+      <ScrollView contentContainerStyle={{paddingBottom: 80}}>{this.renderFilteredIngredients()}</ScrollView>
     </View>)
   }
 }

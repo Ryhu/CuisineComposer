@@ -96,11 +96,21 @@ class Find extends React.Component {
     let filteredArr = this.filterSearch()
     return(<View style={styles.container}>
       { filteredArr.map( (i, keyVal) => {
-        return(
-          <TouchableOpacity key={keyVal} onPress={ () => this.addToReqs(i)} style={styles.findIngredient}>
-            <Text style={styles.container}>{i.name}</Text>
-          </TouchableOpacity>
-        )
+          return(
+            <TouchableOpacity key={keyVal} onPress={ () => this.addToReqs(i)} style={styles.findIngredient}>
+              <Image source={{uri: Expo.FileSystem.documentDirectory + i.name}} style={{width: 300, height: 50}}/>
+              <Text style={[styles.container,{
+                textShadowColor: 'black',
+                textShadowOffset: {width: -1, height: 1},
+                textShadowRadius: 10,
+                color:'white',
+                paddingLeft:5,
+                paddingRight:5,
+                position:'absolute',
+              }]}>{i.name}</Text>
+            </TouchableOpacity>
+          )
+
       })}
     </View>)
   }
@@ -179,9 +189,9 @@ class Find extends React.Component {
     return (
       <View>
         <ScrollView style={styles.findView}>
-          <TextInput style={{backgroundColor: 'white'}} onChangeText={ (text) => this.setState({filter: text}) } value={ this.state.filter }/>
-          <View >
-            <Text>All Ingredients</Text>
+          <View style={styles.container}><Text style={{fontSize:20, fontWeight:'bold'}}>All Ingredients</Text></View>
+          <TextInput style={{backgroundColor: 'white', marginBottom:10, marginTop:10, fontSize:18}} onChangeText={ (text) => this.setState({filter: text}) } value={ this.state.filter } placeholder="Search Ingredients..." underlineColorAndroid="transparent"/>
+          <View style={styles.container}>
             { this.renderFilteredIngredients()}
           </View>
         </ScrollView>
@@ -203,16 +213,6 @@ class Find extends React.Component {
             <Ionicons name='md-send' />
           </TouchableOpacity>
         </Animated.View>
-
-
-
-
-
-
-
-
-
-
 
       </View>
     )
