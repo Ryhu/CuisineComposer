@@ -69,14 +69,17 @@ class AddIngredient extends React.Component {
 
 
   files = () => {
-    Expo.FileSystem.downloadAsync('https://i.imgur.com/LdWshnr.jpg',
-      Expo.FileSystem.documentDirectory + 'lettuce')
+    Expo.FileSystem.downloadAsync('https://i.imgur.com/fvAPawE.jpg',
+      Expo.FileSystem.documentDirectory + 'bread')
       .then(res => console.log(res))
-    Expo.FileSystem.downloadAsync('https://i.imgur.com/3xQFylk.jpg',
-      Expo.FileSystem.documentDirectory + 'steak')
+    Expo.FileSystem.downloadAsync('https://i.imgur.com/29wfs82.jpg',
+      Expo.FileSystem.documentDirectory + 'chicken')
       .then(res => console.log(res))
-    Expo.FileSystem.downloadAsync('https://i.imgur.com/abHVCLg.jpg',
-      Expo.FileSystem.documentDirectory + 'peppers')
+    Expo.FileSystem.downloadAsync('https://i.imgur.com/M96QQxn.jpg',
+      Expo.FileSystem.documentDirectory + 'cheese')
+      .then(res => console.log(res))
+    Expo.FileSystem.downloadAsync('https://i.imgur.com/UeUNwgR.jpg',
+      Expo.FileSystem.documentDirectory + 'noodles')
       .then(res => console.log(res))
 
   }

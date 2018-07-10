@@ -100,7 +100,7 @@ class CartEdit extends React.Component {
     return(<ScrollView contentContainerStyle={styles.container}>
       {this.state.ingredientsdb.map( (ingredient, keyVal) => {
         return(
-            <View key={keyVal} onPress={ () => this.addToReqs(i)} style={styles.findIngredient}>
+            <View key={keyVal} onPress={ () => this.addToReqs(i)} style={[styles.findIngredient, {flex: 1, flexDirection: 'row'}]}>
               <Image source={{uri: Expo.FileSystem.documentDirectory + ingredient.name}} style={{width: 300, height: 50, position:'absolute'}}/>
               <TouchableOpacity style={[styles.container, {width: 50, height: 50, backgroundColor:'transparent'}]} onPress={ () => this.handleMath("-", ingredient) }><Text style={[styles.overImageText, {fontSize:20}]}>-</Text></TouchableOpacity>
               <Text style={styles.overImageText}>{ingredient.name + ': ' + ingredient.amount}</Text>
@@ -110,7 +110,6 @@ class CartEdit extends React.Component {
       })}
     </ScrollView>)
   }
-  //          <Button>-</Button>
 
   render() {
     return this.renderIngredients()

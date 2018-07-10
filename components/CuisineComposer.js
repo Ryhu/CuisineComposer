@@ -30,11 +30,10 @@ import { createMaterialBottomTabNavigator } from 'react-navigation-material-bott
 
 
 const FindStack = createStackNavigator({
-
   Find: {
-    screen: () => <Find screenProps='bob' />,
+    screen: Find,
     navigationOptions: () => ({
-      title: "Find"
+      title: "Find",
     }),
   },
 
