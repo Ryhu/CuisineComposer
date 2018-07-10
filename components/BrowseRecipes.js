@@ -1,6 +1,7 @@
 import React from 'react';
 import RecipeView from './RecipeView'
-import { Button, View, Text, Image, TextInput, TouchableOpacity } from "react-native";
+import { Button, View, Text, Image, TextInput, TouchableOpacity, ScrollView } from "react-native";
+import styles from '../components/stylesheet'
 
 class BrowseRecipes extends React.Component {
 
@@ -49,7 +50,7 @@ class BrowseRecipes extends React.Component {
     <Text>Search: </Text>
     <TextInput style={{backgroundColor: 'white'}} onChangeText={ (text) => this.setState({filter: text}) } value={ this.state.filter} placeholder="Search Recipes..." underlineColorAndroid="transparent"/>
       {filteredArr.map( (recipe, keyVal) => {
-        return(<TouchableOpacity key={keyVal} style={{backgroundColor: '#66a3ff', marginTop:5}} onPress={ () => this.recipeSwitch(recipe) }>
+        return(<TouchableOpacity key={keyVal} style={styles.recipeTile} onPress={ () => this.recipeSwitch(recipe) }>
           <Text>{recipe.name}</Text>
         </TouchableOpacity>)
       })}

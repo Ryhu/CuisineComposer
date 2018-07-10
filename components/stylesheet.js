@@ -73,6 +73,18 @@ export default StyleSheet.create({
     color:'white',
     paddingLeft:5,
     paddingRight:5,
-  }
+  },
+  recipeTile:{
+    paddingLeft:5,
+    height:60,
+    width: 400,
+    backgroundColor: '#ff4d4d',
+    borderRadius: 10,
+    borderWidth: 0.5,
+    borderColor: '#d6d7da',
+    overflow: 'hidden',
+    justifyContent: 'center',
+    fontWeight:'bold'
+  },
 
 });
