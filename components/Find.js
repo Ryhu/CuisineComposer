@@ -26,6 +26,18 @@ class Find extends React.Component {
   }
 
   componentDidMount(){
+    this.getData()
+  }
+
+  componentWillReceiveProps(){
+    console.log("asdfjklhsadfjkhlfsdajkhlsdajkhlsdfajkhldsfjhklfdsahkl")
+    this.setState({
+      shown: !this.state.shown
+    })
+  }
+
+
+  getData(){
     fetch("http://192.168.2.184:3000/api/v1/recipes")
       .then(res => res.json())
       .then(res => {
@@ -97,20 +109,11 @@ class Find extends React.Component {
     return(<View style={styles.container}>
       { filteredArr.map( (i, keyVal) => {
           return(
-            <TouchableOpacity key={keyVal} onPress={ () => this.addToReqs(i)} style={styles.findIngredient}>
-              <Image source={{uri: Expo.FileSystem.documentDirectory + i.name}} style={{width: 300, height: 50}}/>
-              <Text style={[styles.container,{
-                textShadowColor: 'black',
-                textShadowOffset: {width: -1, height: 1},
-                textShadowRadius: 10,
-                color:'white',
-                paddingLeft:5,
-                paddingRight:5,
-                position:'absolute',
-              }]}>{i.name}</Text>
+            <TouchableOpacity key={keyVal} onPress={ () => this.addToReqs(i)} style={[styles.findIngredient, {justifyContent:'center'}]}>
+              <Image source={{uri: Expo.FileSystem.documentDirectory + i.name}} style={{width: 300, height: 60, position:'absolute'}}/>
+              <Text style={styles.overImageText}>{i.name}</Text>
             </TouchableOpacity>
           )
-
       })}
     </View>)
   }
@@ -134,7 +137,6 @@ class Find extends React.Component {
     let arr = this.state.ingredientsdb.filter( (ingredient) => {
       return (ingredient.name.indexOf(this.state.filter) >= 0)
     })
-
     return arr
   }
 
@@ -166,7 +168,8 @@ class Find extends React.Component {
 
 
   render() {
-
+    console.log("i got hit!")
+    console.log(this.props)
     const anistyles = StyleSheet.create({
       pullOutTab:{
         position:'absolute',
@@ -188,6 +191,7 @@ class Find extends React.Component {
 
     return (
       <View>
+
         <ScrollView style={styles.findView}>
           <View style={styles.container}><Text style={{fontSize:20, fontWeight:'bold'}}>All Ingredients</Text></View>
           <TextInput style={{backgroundColor: 'white', marginBottom:10, marginTop:10, fontSize:18}} onChangeText={ (text) => this.setState({filter: text}) } value={ this.state.filter } placeholder="Search Ingredients..." underlineColorAndroid="transparent"/>

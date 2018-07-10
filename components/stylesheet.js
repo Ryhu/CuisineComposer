@@ -25,8 +25,14 @@ export default StyleSheet.create({
     height:50,
     width: 300,
     backgroundColor: '#4dff88',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
+    flex: 1,
+    flexDirection: 'row',
+    borderRadius: 10,
+    borderWidth: 0.5,
+    borderColor: '#d6d7da',
+    overflow: 'hidden'
   },
   reqIngredient:{
     marginTop:5,
@@ -58,5 +64,13 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  overImageText:{
+    textShadowColor: 'black',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 10,
+    color:'white',
+    paddingLeft:5,
+    paddingRight:5,
+  }
 
 });

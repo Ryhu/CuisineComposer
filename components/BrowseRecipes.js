@@ -47,7 +47,7 @@ class BrowseRecipes extends React.Component {
     let filteredArr = this.filterSearch()
     return( <View>
     <Text>Search: </Text>
-    <TextInput style={{backgroundColor: 'white'}} onChangeText={ (text) => this.setState({filter: text}) } value={ this.state.filter }/>
+    <TextInput style={{backgroundColor: 'white'}} onChangeText={ (text) => this.setState({filter: text}) } value={ this.state.filter} placeholder="Search Recipes..." underlineColorAndroid="transparent"/>
       {filteredArr.map( (recipe, keyVal) => {
         return(<TouchableOpacity key={keyVal} style={{backgroundColor: '#66a3ff', marginTop:5}} onPress={ () => this.recipeSwitch(recipe) }>
           <Text>{recipe.name}</Text>

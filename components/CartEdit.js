@@ -13,6 +13,14 @@ class CartEdit extends React.Component {
   }
 
   componentDidMount(){
+    this.getData()
+  }
+
+  componentWillReceiveProps(){
+    this.getData()
+  }
+
+  getData(){
     fetch("http://192.168.2.184:3000/api/v1/shopping_carts")
       .then(res => res.json())
       .then(res => {
@@ -85,49 +93,19 @@ class CartEdit extends React.Component {
     })
   }
 
-  renderFilteredIngredients(){
-    let filteredArr = this.filterSearch()
-    return(<View style={styles.container}>
-      { filteredArr.map( (i, keyVal) => {
-          return(
-            <TouchableOpacity key={keyVal} onPress={ () => this.addToReqs(i)} style={styles.findIngredient}>
-              <Image source={{uri: Expo.FileSystem.documentDirectory + i.name}} style={{width: 300, height: 50}}/>
-              <Text style={[styles.container,{
-                textShadowColor: 'black',
-                textShadowOffset: {width: -1, height: 1},
-                textShadowRadius: 10,
-                color:'white',
-                paddingLeft:5,
-                paddingRight:5,
-                position:'absolute',
-              }]}>{i.name}</Text>
-            </TouchableOpacity>
-          )
 
-      })}
-    </View>)
-  }
 
 
   renderIngredients(){
-    return(<ScrollView>
+    return(<ScrollView contentContainerStyle={styles.container}>
       {this.state.ingredientsdb.map( (ingredient, keyVal) => {
         return(
-          <TouchableOpacity key={keyVal} onPress={ () => this.addToReqs(i)} style={styles.findIngredient}>
-            <Image source={{uri: Expo.FileSystem.documentDirectory + i.name}} style={{width: 300, height: 50}}/>
-            <TouchableOpacity onPress={ () => this.handleMath("-", ingredient) }><Text>-</Text></TouchableHighlight>
-            <Text style={[styles.container,{
-              textShadowColor: 'black',
-              textShadowOffset: {width: -1, height: 1},
-              textShadowRadius: 10,
-              color:'white',
-              paddingLeft:5,
-              paddingRight:5,
-              position:'absolute',
-            }]}>{ingredient.name + ': ' + ingredient.amount}}</Text>
-            <TouchableOpacity onPress={ () => this.handleMath("+", ingredient) }><Text>+</Text></TouchableOpacity>
-            </TouchableOpacity>
-          </TouchableOpacity>
+            <View key={keyVal} onPress={ () => this.addToReqs(i)} style={styles.findIngredient}>
+              <Image source={{uri: Expo.FileSystem.documentDirectory + ingredient.name}} style={{width: 300, height: 50, position:'absolute'}}/>
+              <TouchableOpacity style={[styles.container, {width: 50, height: 50, backgroundColor:'transparent'}]} onPress={ () => this.handleMath("-", ingredient) }><Text style={[styles.overImageText, {fontSize:20}]}>-</Text></TouchableOpacity>
+              <Text style={styles.overImageText}>{ingredient.name + ': ' + ingredient.amount}</Text>
+              <TouchableOpacity style={[styles.container, {width: 50, height: 50, backgroundColor:'transparent'}]} onPress={ () => this.handleMath("+", ingredient) }><Text style={[styles.overImageText, {fontSize:20}]}>+</Text></TouchableOpacity>
+            </View>
         )
       })}
     </ScrollView>)
