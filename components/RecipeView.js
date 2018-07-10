@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, View, Text, Image, Alert } from "react-native";
-
+import styles from '../components/stylesheet'
 
 class RecipeView extends React.Component {
 
@@ -53,10 +53,11 @@ class RecipeView extends React.Component {
 
     return(
       <View className="recipeScreen">
-        <Text>Im recipe viewer!</Text>
-        <Text>{ recipe.name}</Text>
-        <Text>{ recipe.time}</Text>
+        <Text style={styles.recipeTitle}>{ recipe.name}</Text>
+        <Text>Cook Time: { recipe.time}</Text>
+        <Text style={styles.recipeHeader}>Ingredients: </Text>
         {this.ingredientsSpreader(recipe.ingredients)}
+        <Text style={styles.recipeHeader}>Directions: </Text>
         <Text>{ recipe.directions}</Text>
         <Button title="Add To Cart" onPress={this.massAddToCart}></Button>
       </View>

@@ -84,7 +84,16 @@ export default StyleSheet.create({
     borderColor: '#d6d7da',
     overflow: 'hidden',
     justifyContent: 'center',
-    fontWeight:'bold'
+  },
+  recipeTitle:{
+    fontSize:30,
+    fontWeight:'bold',
+
+  },
+  recipeHeader:{
+    marginTop:10,
+    fontSize:20,
+    fontWeight:'bold',
   },
 
 });

@@ -1,11 +1,7 @@
 import React from 'react';
 import { Button, View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
-const styles = StyleSheet.create({
-  recipe: {
-    marginTop:5,
-    backgroundColor:"red"
-  },
-});
+import styles from '../components/stylesheet'
+
 
 class FindResults extends React.Component {
 
@@ -22,12 +18,8 @@ class FindResults extends React.Component {
     let list = this.reqFilter()
     return(<View>
       { list.map( (i, keyVal) => {
-        return(<TouchableOpacity key={keyVal} style={styles.recipe} className="recipeBox" onPress={ () => this.viewRecipe(i) }>
-        <View>
+        return(<TouchableOpacity key={keyVal} style={styles.recipeTile} className="recipeBox" onPress={ () => this.viewRecipe(i) }>
           <Text>{i.name}</Text>
-          <Text>{i.time}</Text>
-          <Text>{i.directions}</Text>
-        </View>
         </TouchableOpacity>)
       })}
     </View>)
