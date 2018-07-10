@@ -10,6 +10,9 @@ export default StyleSheet.create({
     backgroundColor: '#1093f6',
     justifyContent: 'center',
     alignItems: 'center',
+    borderRadius: 10,
+    borderWidth: 0.5,
+    borderColor: '#d6d7da',
   },
   bigButtonText:{
     color: 'white',
@@ -61,6 +64,7 @@ export default StyleSheet.create({
     backgroundColor:'#1093f6',
     justifyContent: 'center',
     alignItems: 'center',
+    borderRadius: 5,
   },
   overImageText:{
     textShadowColor: 'black',

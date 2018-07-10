@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, View, Text, Image } from "react-native";
-
+import { Button, View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
+import styles from '../components/stylesheet'
 
 class PrepFridge extends React.Component {
 
@@ -88,19 +88,19 @@ class PrepFridge extends React.Component {
   }
 
   renderIngredients(){
-    return(<View id="fridgeEditIngredients">
+    return(<ScrollView contentContainerStyle={styles.container}>
       {this.state.ingredientsdb.map( (ingredient, keyVal) => {
-        return(<View className="fridgeEditIngredient" key={keyVal}>
-          <Text>{ingredient.name}</Text>
-
-          <Text className="cartEditIngredientCounter">{ingredient.amount}</Text>
-          <Button title="-" onPress={ () => this.handleMath("-", ingredient) }></Button>
-          <Button title="+" onPress={ () => this.handleMath("+", ingredient) }></Button>
-        </View>)
+        return(
+            <View key={keyVal} onPress={ () => this.addToReqs(i)} style={[styles.findIngredient, {flex: 1, flexDirection: 'row'}]}>
+              <Image source={{uri: Expo.FileSystem.documentDirectory + ingredient.name}} style={{width: 300, height: 50, position:'absolute'}}/>
+              <TouchableOpacity style={[styles.container, {width: 50, height: 50, backgroundColor:'transparent'}]} onPress={ () => this.handleMath("-", ingredient) }><Text style={[styles.overImageText, {fontSize:20}]}>-</Text></TouchableOpacity>
+              <Text style={styles.overImageText}>{ingredient.name + ': ' + ingredient.amount}</Text>
+              <TouchableOpacity style={[styles.container, {width: 50, height: 50, backgroundColor:'transparent'}]} onPress={ () => this.handleMath("+", ingredient) }><Text style={[styles.overImageText, {fontSize:20}]}>+</Text></TouchableOpacity>
+            </View>
+        )
       })}
-    </View>)
+    </ScrollView>)
   }
-  //          <Button>-</Button>
 
   render() {
     return this.renderIngredients()

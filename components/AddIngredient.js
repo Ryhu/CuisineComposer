@@ -88,13 +88,12 @@ class AddIngredient extends React.Component {
   render() {
     return (
       <View className="addForm">
-        <Text>ingredients{"\n"}</Text>
-        <Text>name: </Text>
+        <Text>Name: </Text>
         <TextInput  style={{backgroundColor: 'white'}} value={ this.state.name } onChangeText={ (text) => this.TextInputFieldHandler(text, "name") }/>
-        <Text>picture: </Text>
+        <Text>Picture: </Text>
         <TextInput style={{backgroundColor: 'white'}} value={ this.state.picture } onChangeText={ (text) => this.TextInputFieldHandler(text, "picture") } />
-        <Text>nutrition: </Text>
-        <TextInput style={{backgroundColor: 'white'}} multiline = {true}  value={ this.state.nutrition } onChangeText={ (text) => this.TextInputFieldHandler(text, "nutrition") } ></TextInput>
+        <Text>Nutrition: </Text>
+        <TextInput style={{backgroundColor: 'white'}} multiline = {true} numberOfLines={6} value={ this.state.nutrition } onChangeText={ (text) => this.TextInputFieldHandler(text, "nutrition") } ></TextInput>
       <Button onPress={ this.submit } title="Add Ingredient"/>
 
 

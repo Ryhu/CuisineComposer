@@ -73,15 +73,14 @@ class AddRecipe extends React.Component {
   render() {
     return (
       <View >
-        <Text>recipe{"\n"}</Text>
-        <Text>name: </Text>
+        <Text>Name: </Text>
         <TextInput style={{backgroundColor: 'white'}} value={ this.state.name }  onChangeText={ (text) => this.TextInputFieldHandler(text, "name") }/>
-        <Text>time: </Text>
+        <Text>Time: </Text>
         <TextInput style={{backgroundColor: 'white'}} value={ this.state.time }  onChangeText={ (text) => this.TextInputFieldHandler(text, "time") }/>
-        <Text>ingredients: </Text>
-        <TextInput style={{backgroundColor: 'white'}} multiline = {true} value={ this.state.ingredients } onChangeText={ (text) => this.TextInputFieldHandler(text, "ingredients") }></TextInput>
-        <Text>directions: </Text>
-        <TextInput style={{backgroundColor: 'white'}} multiline = {true} value={ this.state.directions }  onChangeText={ (text) => this.TextInputFieldHandler(text, "directions") }></TextInput>
+        <Text>Ingredients: </Text>
+        <TextInput style={{backgroundColor: 'white'}} multiline = {true} numberOfLines={6} value={ this.state.ingredients } onChangeText={ (text) => this.TextInputFieldHandler(text, "ingredients") }></TextInput>
+        <Text>Directions: </Text>
+        <TextInput style={{backgroundColor: 'white'}} multiline = {true} numberOfLines={6} value={ this.state.directions }  onChangeText={ (text) => this.TextInputFieldHandler(text, "directions") }></TextInput>
         <Button title="Add Recipe" onPress={ this.submit }/>
       </View>
     )
