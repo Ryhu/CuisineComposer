@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View, Text, Image, TextInput, StyleSheet, Alert } from "react-native";
+import { Button, View, Text, Image, TextInput, StyleSheet, Alert, ScrollView } from "react-native";
 const styles = StyleSheet.create({
   multiline:{
     backgroundColor: 'white',
@@ -72,7 +72,7 @@ class AddRecipe extends React.Component {
 
   render() {
     return (
-      <View >
+      <ScrollView contentContainerStyle={{paddingBottom:250}}>
         <Text>Name: </Text>
         <TextInput style={{backgroundColor: 'white'}} value={ this.state.name }  onChangeText={ (text) => this.TextInputFieldHandler(text, "name") }/>
         <Text>Time: </Text>
@@ -82,7 +82,7 @@ class AddRecipe extends React.Component {
         <Text>Directions: </Text>
         <TextInput style={{backgroundColor: 'white'}} multiline = {true} numberOfLines={6} value={ this.state.directions }  onChangeText={ (text) => this.TextInputFieldHandler(text, "directions") }></TextInput>
         <Button title="Add Recipe" onPress={ this.submit }/>
-      </View>
+      </ScrollView>
     )
   }
 }

@@ -9,6 +9,7 @@ class CartEdit extends React.Component {
 
     this.state = {
       ingredientsdb: [],
+      fridgedb: [],
     }
   }
 
@@ -34,6 +35,21 @@ class CartEdit extends React.Component {
           ingredientsdb: result
         })
       })
+
+      fetch("http://192.168.2.184:3000/api/v1/fridges")
+        .then(res => res.json())
+        .then(res => {
+          let result = []
+          console.log(res)
+          for (let i of res[0].fridge_ingredients){
+            let ingredient = Object.assign({amount: i.amount, join_id: i.id}, i.ingredient)
+            result.push(ingredient)
+          }
+
+          this.setState({
+            fridgedb: result
+          })
+        })
   }
 
   handleMath(op, ingredient){
@@ -54,17 +70,7 @@ class CartEdit extends React.Component {
       //delete from state of client
       tempIngredients.splice(pos, 1)
       //delete from the DB
-      fetch(`http://192.168.2.184:3000/api/v1/shopping_cart_ingredients/${ingredient.join_id}`, {
-        method: "DELETE",
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      })
-        .then(res => res.json())
-        .then(res => {
-          console.log(res)
-        })
+      deleteFromdb(ingredient)
     }
     else{
       //edit the DB
@@ -93,8 +99,36 @@ class CartEdit extends React.Component {
     })
   }
 
+  deleteFromdb(ingredient){
+    fetch(`http://192.168.2.184:3000/api/v1/shopping_cart_ingredients/${ingredient.join_id}`, {
+      method: "DELETE",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(res => {
+        console.log(res)
+      })
+  }
 
 
+  fridgeFilter = () => {
+    for (let fridgeIngredient of this.state.fridgedb){
+      for (let cartIngredient of this.state.ingredientsdb){
+        if (fridgeIngredient.name === cartIngredient.name){
+          this.deleteFromdb(cartIngredient)
+          let tempIngredients = this.state.ingredientsdb
+          let pos = tempIngredients.indexOf(cartIngredient)
+          tempIngredients.splice(pos, 1)
+          this.setState({
+            ingredientsdb: tempIngredients
+          })
+        }
+      }
+    }
+  }
 
   renderIngredients(){
     return(<ScrollView contentContainerStyle={styles.container}>
@@ -108,6 +142,7 @@ class CartEdit extends React.Component {
             </View>
         )
       })}
+      <Button onPress={this.fridgeFilter} title="Remove items already in fridge"></Button>
     </ScrollView>)
   }
 

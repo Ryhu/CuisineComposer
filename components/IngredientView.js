@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, View, Text, Image, Alert } from "react-native";
-
+import styles from '../components/stylesheet'
 
 class IngredientView extends React.Component {
 
@@ -56,11 +56,9 @@ class IngredientView extends React.Component {
     let ingredient = this.props.navigation.getParam('ingredient')
     console.log(ingredient)
     return(
-      <View className="recipeScreen">
-        <Text>ingredient viewer!</Text>
-        <Text>{ ingredient.name }</Text>
-        <Text>{ ingredient.picture }</Text>
-        <Text>{ ingredient.nutrition }</Text>
+      <View className="recipeScreen" styles={{alignItems:'center'}}>
+        <Text style={[styles.recipeHeader,{textAlign:'center'}]}>{ ingredient.name }</Text>
+        <View styles={styles.container}><Image source={{uri: Expo.FileSystem.documentDirectory + ingredient.name}} style={{width: 200, height: 200}}/></View>
         <Button title="Add To Cart" onPress={ () => this.addToCart(ingredient)}></Button>
         <Button title="Add To Fridge" onPress={ () => this.addToFridge(ingredient)}></Button>
       </View>

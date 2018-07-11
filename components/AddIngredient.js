@@ -67,44 +67,51 @@ class AddIngredient extends React.Component {
 
 
 
-
+  // put into db code
   files = () => {
-    Expo.FileSystem.downloadAsync('https://i.imgur.com/fvAPawE.jpg',
-      Expo.FileSystem.documentDirectory + 'bread')
+    Expo.FileSystem.downloadAsync('https://i.simgur.com/cj8kjzj.jpg',
+      Expo.FileSystem.documentDirectory + 'carrots')
       .then(res => console.log(res))
-    Expo.FileSystem.downloadAsync('https://i.imgur.com/29wfs82.jpg',
-      Expo.FileSystem.documentDirectory + 'chicken')
+    Expo.FileSystem.downloadAsync('https://i.imgur.com/hPKUMri.jpg',
+      Expo.FileSystem.documentDirectory + 'red wine vinegar')
       .then(res => console.log(res))
-    Expo.FileSystem.downloadAsync('https://i.imgur.com/M96QQxn.jpg',
-      Expo.FileSystem.documentDirectory + 'cheese')
+    Expo.FileSystem.downloadAsync('https://i.imgur.com/DTIFiRn.jpg',
+      Expo.FileSystem.documentDirectory + 'onions')
       .then(res => console.log(res))
-    Expo.FileSystem.downloadAsync('https://i.imgur.com/UeUNwgR.jpg',
-      Expo.FileSystem.documentDirectory + 'noodles')
+    Expo.FileSystem.downloadAsync('https://i.imgur.com/2NHE4Wx.jpg',
+      Expo.FileSystem.documentDirectory + 'cucumbers')
+      .then(res => console.log(res))
+    Expo.FileSystem.downloadAsync('https://i.imgur.com/ezjIwVK.jpg',
+      Expo.FileSystem.documentDirectory + 'olive oil')
       .then(res => console.log(res))
 
   }
 
+  //taken out because not implemented
+  // <Text>Picture: </Text>
+  // <TextInput style={{backgroundColor: 'white'}} value={ this.state.picture } onChangeText={ (text) => this.TextInputFieldHandler(text, "picture") } />
+  // <Text>Nutrition: </Text>
+  // <TextInput style={{backgroundColor: 'white'}} multiline = {true} numberOfLines={6} value={ this.state.nutrition } onChangeText={ (text) => this.TextInputFieldHandler(text, "nutrition") } ></TextInput>
 
   render() {
     return (
       <View className="addForm">
         <Text>Name: </Text>
         <TextInput  style={{backgroundColor: 'white'}} value={ this.state.name } onChangeText={ (text) => this.TextInputFieldHandler(text, "name") }/>
-        <Text>Picture: </Text>
-        <TextInput style={{backgroundColor: 'white'}} value={ this.state.picture } onChangeText={ (text) => this.TextInputFieldHandler(text, "picture") } />
-        <Text>Nutrition: </Text>
-        <TextInput style={{backgroundColor: 'white'}} multiline = {true} numberOfLines={6} value={ this.state.nutrition } onChangeText={ (text) => this.TextInputFieldHandler(text, "nutrition") } ></TextInput>
-      <Button onPress={ this.submit } title="Add Ingredient"/>
-
-
-        <TouchableOpacity onPress={this.files}><Text style={{fontSize:30}}>filesystem</Text></TouchableOpacity>
-        <TouchableOpacity onPress={this.filesfun}><Text>filsys funtimes</Text></TouchableOpacity>
-        <Image source={{uri: 'https://i.vimeocdn.com/portrait/58832_300x300.jpg'}} style={{width: 300, height: 300}}/>
-        <Image source={{uri: Expo.FileSystem.documentDirectory + 'pictures'}} style={{width: 300, height: 300}}/>
+        <Button onPress={ this.submit } title="Add Ingredient"/>
       </View>
     )
   }
 }
+
+// put into db code
+// <TouchableOpacity onPress={this.files}><Text style={{fontSize:30}}>filesystem</Text></TouchableOpacity>
+// <TouchableOpacity onPress={this.filesfun}><Text>filsys funtimes</Text></TouchableOpacity>
+// <Image source={{uri: 'https://i.vimeocdn.com/portrait/58832_300x300.jpg'}} style={{width: 300, height: 300}}/>
+// <Image source={{uri: Expo.FileSystem.documentDirectory + 'pictures'}} style={{width: 300, height: 300}}/>
+
+//make cart take away from fridge
+
 
 
 
